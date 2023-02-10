@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-using NUnit.Framework;
 
 namespace WebAddressbookTests
 {
@@ -14,17 +13,16 @@ namespace WebAddressbookTests
     {
         private string baseURL;
 
-        public NavigationHelper(ApplicationManager manager, string baseURL)
-            : base(manager)
+        public NavigationHelper(IWebDriver driver, string baseURL)
+            : base(driver)
         {
             this.baseURL = baseURL;
         }
 
-        public void OpenHomePage()
+        public void GoToHomePage()
         {
             driver.Navigate().GoToUrl(baseURL);
         }
-
         public void GoToGroupsPage()
         {
             driver.FindElement(By.LinkText("groups")).Click();

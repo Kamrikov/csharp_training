@@ -10,7 +10,6 @@ namespace WebAddressbookTests
     {
         private string firstName = "";
         private string lastName = "";
- 
         public string FirstName
         {
             get
@@ -22,7 +21,6 @@ namespace WebAddressbookTests
                 firstName = value;
             }
         }
-
         public string LastName
         {
             get

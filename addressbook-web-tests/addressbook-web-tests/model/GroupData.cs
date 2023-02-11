@@ -11,7 +11,6 @@ namespace WebAddressbookTests
         private string name;
         private string header = "";
         private string footer = "";
-
         public GroupData(string name)
         { 
             this.name = name; 
@@ -27,7 +26,6 @@ namespace WebAddressbookTests
                 name = value;
             }
         }
-
         public string Header
         {
             get
@@ -39,7 +37,6 @@ namespace WebAddressbookTests
                 header = value;
             }
         }
-
         public string Footer
         {
             get

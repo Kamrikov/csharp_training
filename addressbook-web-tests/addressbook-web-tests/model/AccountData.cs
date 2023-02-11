@@ -10,13 +10,11 @@ namespace WebAddressbookTests
     {
         private string username;
         private string password;
-
         public AccountData(string username, string password)
         {
             this.username = username;
             this.password = password;
         }
-
         public string Username
         {
             get
@@ -28,7 +26,7 @@ namespace WebAddressbookTests
                 username = value;
             }
         }
-            public string Password
+        public string Password
         {
             get
             {

@@ -9,7 +9,6 @@ namespace WebAddressbookTests
     [TestFixture]
     public class GroupCreationTests : TestBase
     {
-
         [Test]
         public void GroupCreationTest()
         {

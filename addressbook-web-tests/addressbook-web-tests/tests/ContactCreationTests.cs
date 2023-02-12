@@ -14,7 +14,7 @@ namespace WebAddressbookTests
         {
             ContactData contact = new ContactData
             {
-                FirstName = "Ivan",
+                FirstName = "Iva",
                 LastName = "Sidorov"
             };
 

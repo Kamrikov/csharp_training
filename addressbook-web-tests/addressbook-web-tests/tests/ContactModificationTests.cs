@@ -17,7 +17,7 @@ namespace WebAddressbookTests
                 FirstName = "Fedor",
                 LastName = "Budkin"
             };
-            app.Contacts.Modify(22, newData);
+            app.Contacts.Modify(newData);
         }
     }
 }

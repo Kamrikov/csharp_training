@@ -24,9 +24,9 @@ namespace WebAddressbookTests
             manager.Navigator.ReturnToHomePage();
             return this;
         }
-        public ContactHelper Modify(int p, ContactData newData)
+        public ContactHelper Modify(ContactData newData)
         {
-            SelectContact(p);
+            SelectContact();
             InitContactModification();
             FillContactForm(newData);
             SubmitContactModification();
@@ -34,15 +34,16 @@ namespace WebAddressbookTests
             manager.Navigator.ReturnToHomePage();
             return this;
         }
-        public ContactHelper Remove(int p)
+        public ContactHelper Remove()
         {
-            SelectContact(p);
+            SelectContact();
             RemoveContact();
             return this;
         }
-        public ContactHelper SelectContact(int index)
+        public ContactHelper SelectContact()
         {
-            driver.FindElement(By.XPath("//input[@id='"+ index + "']")).Click();
+            //driver.FindElement(By.XPath("//input[@id= " + index + "]")).Click();
+            driver.FindElement(By.XPath("//td/input")).Click();
             return this;
         }
         public void InitNewContactCreation()

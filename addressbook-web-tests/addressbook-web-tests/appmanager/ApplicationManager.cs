@@ -33,7 +33,6 @@ namespace WebAddressbookTests
             groupHelper = new GroupHelper(this);
             contactHelper = new ContactHelper(this);
         }
- /*
         ~ApplicationManager() //После Лекции 3.2 этот диструктор должен закрывать браузер
         {
             try
@@ -45,12 +44,13 @@ namespace WebAddressbookTests
                 // Ignore errors if unable to close the browser
             }
         }
- */
         public static ApplicationManager GetInstance()
         {
             if (! app.IsValueCreated)
             {
-                app.Value = new ApplicationManager();
+                ApplicationManager newInstance = new ApplicationManager();
+                newInstance.Navigator.GoToHomePage();
+                app.Value = newInstance;
             }
             return app.Value;
         }
@@ -59,19 +59,6 @@ namespace WebAddressbookTests
             get 
             { 
                 return driver; 
-            }
-        }
-        public void Stop()  //После Занятия 3.2 этого метода не должно быть. Закрытие браузера должно происходить в диструкторе ~ApplicationManager()
-        {
-            {
-                try
-                {
-                    driver.Quit();
-                }
-                catch (Exception)
-                {
-                    // Ignore errors if unable to close the browser
-                }
             }
         }
         public LoginHelper Auth { get { return loginHelper; } }

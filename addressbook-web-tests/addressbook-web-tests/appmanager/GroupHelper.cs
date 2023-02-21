@@ -35,7 +35,6 @@ namespace WebAddressbookTests
                 GroupData group = new GroupData("тестИзменение");
                 group.Header = "тестИзменение";
                 group.Footer = "тестИзменение";
-
                 Create(group);
             }
 
@@ -55,7 +54,6 @@ namespace WebAddressbookTests
                  GroupData group = new GroupData("тестУдаление");
                  group.Header = "тестУдаление";
                  group.Footer = "тестУдаление";
-
                  Create(group);
              }
 

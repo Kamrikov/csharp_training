@@ -33,7 +33,6 @@ namespace WebAddressbookTests
                     FirstName = "Anna",
                     LastName = "Sidoriva"
                 };
-
                 Create(contact);
             }
             SelectContact();
@@ -53,7 +52,6 @@ namespace WebAddressbookTests
                     FirstName = "Ivas",
                     LastName = "Sidoriv"
                 };
-
                 Create(contact);
             }
             SelectContact();

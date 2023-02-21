@@ -33,7 +33,7 @@ namespace WebAddressbookTests
             groupHelper = new GroupHelper(this);
             contactHelper = new ContactHelper(this);
         }
-        ~ApplicationManager() //После Лекции 3.2 этот диструктор должен закрывать браузер
+        ~ApplicationManager() //После Лекции 3.2 этот деструктор должен закрывать браузер
         {
             try
             {

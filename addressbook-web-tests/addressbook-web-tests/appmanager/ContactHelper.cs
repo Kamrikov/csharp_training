@@ -26,6 +26,16 @@ namespace WebAddressbookTests
         }
         public ContactHelper Modify(ContactData newData)
         {
+            if (!IsElementPresent(By.XPath("//td/input")))
+            {
+                ContactData contact = new ContactData
+                {
+                    FirstName = "Anna",
+                    LastName = "Sidoriva"
+                };
+
+                Create(contact);
+            }
             SelectContact();
             InitContactModification();
             FillContactForm(newData);
@@ -36,6 +46,16 @@ namespace WebAddressbookTests
         }
         public ContactHelper Remove()
         {
+            if (!IsElementPresent(By.XPath("//td/input")))
+            {
+                ContactData contact = new ContactData
+                {
+                    FirstName = "Ivas",
+                    LastName = "Sidoriv"
+                };
+
+                Create(contact);
+            }
             SelectContact();
             RemoveContact();
             return this;

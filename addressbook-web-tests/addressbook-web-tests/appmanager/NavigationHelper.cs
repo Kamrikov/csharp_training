@@ -36,6 +36,10 @@ namespace WebAddressbookTests
         }
         public void ReturnToHomePage()
         {
+            if (driver.Url == baseURL + "/addressbook/index.php")
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("home page")).Click();
         }
     }

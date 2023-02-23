@@ -13,7 +13,7 @@ namespace WebAddressbookTests
         [Test]
         public void LoginWithValidCredentials()
         {
-            //подотовка
+            //подготовка
             app.Auth.Logout();
 
             //действие

@@ -48,7 +48,7 @@ namespace WebAddressbookTests
         public GroupHelper Remove(int p)
         {
             manager.Navigator.GoToGroupsPage();
-
+            
              if (! IsElementPresent(By.XPath("//div[@id='content']/form/span[1]/input")))
              {
                  GroupData group = new GroupData("тестУдаление");

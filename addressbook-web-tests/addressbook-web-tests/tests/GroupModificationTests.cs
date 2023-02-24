@@ -12,7 +12,7 @@ namespace WebAddressbookTests
         [Test]
         public void GroupModificationTest()
         {
-            app.Groups.CheckingForGroup();
+            app.Groups.CheckForGroup();
 
             GroupData newData = new GroupData("тестИзменение");
             newData.Header = "тестИзменение";

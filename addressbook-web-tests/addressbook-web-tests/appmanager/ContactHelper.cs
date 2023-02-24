@@ -76,7 +76,7 @@ namespace WebAddressbookTests
             driver.SwitchTo().Alert().Accept();
             return this;
         }
-        public ContactHelper CheckingForContact()
+        public ContactHelper CheckForContact()
         {
             if (!IsElementPresent(By.XPath("//td/input")))
             {

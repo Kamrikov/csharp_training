@@ -29,14 +29,6 @@ namespace WebAddressbookTests
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
-            
-            if (!IsElementPresent(By.XPath("//div[@id='content']/form/span[1]/input")))
-            {
-                GroupData group = new GroupData("тестИзменение");
-                group.Header = "тестИзменение";
-                group.Footer = "тестИзменение";
-                Create(group);
-            }
 
             SelectGroup(p);
             InitGroupModification();
@@ -48,14 +40,6 @@ namespace WebAddressbookTests
         public GroupHelper Remove(int p)
         {
             manager.Navigator.GoToGroupsPage();
-            
-             if (! IsElementPresent(By.XPath("//div[@id='content']/form/span[1]/input")))
-             {
-                 GroupData group = new GroupData("тестУдаление");
-                 group.Header = "тестУдаление";
-                 group.Footer = "тестУдаление";
-                 Create(group);
-             }
 
             SelectGroup(p);
             RemoveGroup();
@@ -103,6 +87,19 @@ namespace WebAddressbookTests
         public GroupHelper InitGroupModification()
         {
             driver.FindElement(By.Name("edit")).Click();
+            return this;
+        }
+        public GroupHelper CheckingForGroup()
+        {
+            manager.Navigator.GoToGroupsPage();
+
+            if (!IsElementPresent(By.XPath("//div[@id='content']/form/span[1]/input")))
+            {
+                GroupData group = new GroupData("НетГрупп");
+                group.Header = "НетГрупп";
+                group.Footer = "НетГрупп";
+                Create(group);
+            }
             return this;
         }
     }

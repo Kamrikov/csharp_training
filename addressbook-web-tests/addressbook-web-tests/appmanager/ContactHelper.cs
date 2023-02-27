@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using System.Text.RegularExpressions;
 
 namespace WebAddressbookTests
 {
@@ -80,14 +81,22 @@ namespace WebAddressbookTests
         {
             if (!IsElementPresent(By.XPath("//td/input")))
             {
-                ContactData contact = new ContactData
-                {
-                    FirstName = "НетКонтактов",
-                    LastName = "НетКонтактов"
-                };
+                ContactData contact = new ContactData("НетКонтактов", "НетКонтактов");
                 Create(contact);
             }
             return this;
+        }
+
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigator.GoToHomePage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr"));
+            foreach (IWebElement element in elements)
+            {
+                contacts.Add(new ContactData(element.Text, element.Text));
+            }
+            return contacts;
         }
     }
 }

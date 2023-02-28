@@ -28,6 +28,10 @@ namespace WebAddressbookTests
             return FirstName == other.FirstName 
                 && LastName == other.LastName;
         }
+        public int GetHashCode()
+        {
+            return FirstName.GetHashCode();
+        }
         public string FirstName
         {
             get

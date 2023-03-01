@@ -20,6 +20,7 @@ namespace WebAddressbookTests
             newData.Footer = "тестИзменение";
 
             List<GroupData> oldGroups = app.Groups.GetGroupList();
+            GroupData oldDate = oldGroups[0];
 
             app.Groups.Modify(0, newData);
 
@@ -30,6 +31,14 @@ namespace WebAddressbookTests
             oldGroups.Sort();
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
+
+            foreach (GroupData group in newGroups) 
+            {
+                if (group.Id == oldDate.Id)
+                {
+                    Assert.AreEqual(newData.Name, group.Name);
+                }
+            }
 
         }
     }

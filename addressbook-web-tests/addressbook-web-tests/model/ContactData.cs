@@ -30,7 +30,7 @@ namespace WebAddressbookTests
         }
         public override int GetHashCode()
         {
-            return LastName.GetHashCode();
+            return LastName.GetHashCode() + FirstName.GetHashCode();
         }
         public override string ToString()
         {
@@ -42,7 +42,7 @@ namespace WebAddressbookTests
             {
                 return 1;
             }
-            return LastName.CompareTo(other.LastName);
+            return LastName.CompareTo(other.LastName) + FirstName.CompareTo(other.FirstName);
         }
         public string FirstName
         {

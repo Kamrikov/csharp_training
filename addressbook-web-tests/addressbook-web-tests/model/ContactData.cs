@@ -42,7 +42,17 @@ namespace WebAddressbookTests
             {
                 return 1;
             }
-            return LastName.CompareTo(other.LastName) + FirstName.CompareTo(other.FirstName);
+            if (Object.ReferenceEquals(other, LastName))
+            {
+                return LastName.CompareTo(other.LastName);
+            }
+            else
+            {
+                return FirstName.CompareTo(other.FirstName);
+            }
+            
+
+            // return LastName.CompareTo(other.LastName) + FirstName.CompareTo(other.FirstName);
         }
         public string FirstName
         {

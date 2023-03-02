@@ -105,7 +105,6 @@ namespace WebAddressbookTests
             }
             return this;
         }
-
         private List<GroupData> groupCache = null;
         public List<GroupData> GetGroupList()
         {

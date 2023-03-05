@@ -50,7 +50,7 @@ namespace WebAddressbookTests
             {
                 return FirstName.CompareTo(other.FirstName);
             }
-            /*Задание 9 Попытка 2
+            /*Задание 9 Попытка 3
             if (Object.ReferenceEquals(other, LastName))
             {
                 return LastName.CompareTo(other.LastName);
@@ -60,7 +60,7 @@ namespace WebAddressbookTests
                 return FirstName.CompareTo(other.FirstName);
             }*/
 
-            //Задание 9 Попытка 1 return LastName.CompareTo(other.LastName) + FirstName.CompareTo(other.FirstName);
+            //Задание 9 Попытка 2 return LastName.CompareTo(other.LastName) + FirstName.CompareTo(other.FirstName);
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }

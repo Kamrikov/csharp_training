@@ -42,7 +42,7 @@ namespace WebAddressbookTests
             {
                 return 1;
             }
-            if (Object.ReferenceEquals(other, LastName))
+            if (LastName.CompareTo(other.LastName) != 0)
             {
                 return LastName.CompareTo(other.LastName);
             }
@@ -50,30 +50,25 @@ namespace WebAddressbookTests
             {
                 return FirstName.CompareTo(other.FirstName);
             }
+            /*Задание 9 Попытка 2
+            if (Object.ReferenceEquals(other, LastName))
+            {
+                return LastName.CompareTo(other.LastName);
+            }
+            else
+            {
+                return FirstName.CompareTo(other.FirstName);
+            }*/
 
-            // return LastName.CompareTo(other.LastName) + FirstName.CompareTo(other.FirstName);
+            //Задание 9 Попытка 1 return LastName.CompareTo(other.LastName) + FirstName.CompareTo(other.FirstName);
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Id { get; set; }
         public string Address { get; set; }
-        public string Email { get; set; }
-        public string Email2 { get; set; }
-        public string Email3 { get; set; }
         public string HomePhone { get; set; }
         public string MobilePhone { get; set; }
         public string WorkPhone { get; set; }
-       /* public string AllEmails 
-        { 
-            get 
-            { 
-
-            } 
-            set 
-            {
-
-            } 
-        } */
         public string AllPhones
         {
             get

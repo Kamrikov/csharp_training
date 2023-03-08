@@ -36,7 +36,7 @@ namespace WebAddressbookTests
         }
         public override string ToString()
         {
-            return "name=" + LastName + " " + FirstName;
+            return "name=" + LastName + "\n" + FirstName;
         }
         public int CompareTo(ContactData other)
         {

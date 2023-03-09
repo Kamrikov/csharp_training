@@ -178,9 +178,9 @@ namespace WebAddressbookTests
             manager.Navigator.GoToHomePage();
             InitContactDetails(index);
             string allInformation = driver.FindElement(By.CssSelector("[id='content']")).Text;
-            return Regex.Replace(allInformation, "[ :\\r\\nHMWFomepageP]", "");
+            return Regex.Replace(allInformation, "[ \\r\\n]", "");
         }
-        public string GetContactInformationFromEditFormAll(int index)
+        public ContactData GetContactInformationFromEditFormAll(int index)
         {
             manager.Navigator.GoToHomePage();
             InitContactModification(index);
@@ -206,8 +206,27 @@ namespace WebAddressbookTests
             string phone2 = driver.FindElement(By.Name("phone2")).GetAttribute("value");
             string notes = driver.FindElement(By.Name("notes")).GetAttribute("value");
 
-            return Regex.Replace(firstName + middleName + lastName + nickName + title + company + address + homePhone + mobilePhone + workPhone + fax 
-                + email + email2 + email3 + homePage + address2 + phone2 + notes, "[ :\\r\\nHMWFomepageP]", "");
+            return new ContactData(firstName, lastName)
+            {
+                MiddleName = middleName,
+                NickName = nickName,
+                Title = title,
+                Company = company,
+                Address = address,
+                HomePhone = homePhone,
+                MobilePhone = mobilePhone,
+                WorkPhone = workPhone,
+                Fax = fax,
+                Email = email,
+                Email2 = email2,
+                Email3 = email3,
+                HomePage = homePage,
+                Address2 = address2,
+                Phone2 = phone2,
+                Notes = notes
+            };
+            //return Regex.Replace(firstName + middleName + lastName + nickName + title + company + address + homePhone + mobilePhone + workPhone + fax 
+            //    + email + email2 + email3 + homePage + address2 + phone2 + notes, "[\\r\\n]", "");
         }
         public ContactHelper InitContactDetails(int index)
         {

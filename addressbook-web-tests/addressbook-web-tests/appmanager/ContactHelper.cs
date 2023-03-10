@@ -178,7 +178,7 @@ namespace WebAddressbookTests
             manager.Navigator.GoToHomePage();
             InitContactDetails(index);
             string allInformation = driver.FindElement(By.CssSelector("[id='content']")).Text;
-            return Regex.Replace(allInformation, "[ \\r\\n]", "");
+            return allInformation;
         }
         public ContactData GetContactInformationFromEditFormAll(int index)
         {
@@ -225,8 +225,6 @@ namespace WebAddressbookTests
                 Phone2 = phone2,
                 Notes = notes
             };
-            //return Regex.Replace(firstName + middleName + lastName + nickName + title + company + address + homePhone + mobilePhone + workPhone + fax 
-            //    + email + email2 + email3 + homePage + address2 + phone2 + notes, "[\\r\\n]", "");
         }
         public ContactHelper InitContactDetails(int index)
         {

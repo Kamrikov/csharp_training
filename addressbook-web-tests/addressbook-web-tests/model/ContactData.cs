@@ -20,6 +20,18 @@ namespace WebAddressbookTests
         private string fax;
         private string homePage;
         private string phone2;
+        private string email;
+        private string email2;
+        private string email3;
+        private string address2;
+        private string firstName;
+        private string middleName;
+        private string lastName;
+        private string nickName;
+        private string title;
+        private string company;
+        private string address;
+        private string notes;
 
         public ContactData(string firstName, string lastName)
         {
@@ -62,10 +74,133 @@ namespace WebAddressbookTests
                 return FirstName.CompareTo(other.FirstName);
             }
         }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public string Id { get; set; }
-        public string Address { get; set; }
+        public string FirstName
+        {
+            get
+            {
+                if (firstName == null || firstName == "")
+                {
+                    return firstName;
+                }
+                else
+                {
+                    return firstName + " ";
+                }
+            }
+            set
+            {
+                firstName = value;
+            }
+        }
+        public string MiddleName
+        {
+            get
+            {
+                if (middleName == null || middleName == "")
+                {
+                    return middleName;
+                }
+                else
+                {
+                    return middleName + " ";
+                }
+            }
+            set
+            {
+                middleName = value;
+            }
+        }
+        public string LastName
+        {
+            get
+            {
+                if (lastName == null || lastName == "")
+                {
+                    return lastName;
+                }
+                else
+                {
+                    return lastName;
+                }
+            }
+            set
+            {
+                lastName = value;
+            }
+        }
+        public string NickName
+        {
+            get
+            {
+                if (nickName == null || nickName == "")
+                {
+                    return nickName;
+                }
+                else
+                {
+                    return "\r\n" + nickName;
+                }
+            }
+            set
+            {
+                nickName = value;
+            }
+        }
+        public string Title
+        {
+            get
+            {
+                if (title == null || title == "")
+                {
+                    return title;
+                }
+                else
+                {
+                    return "\r\n" + title;
+                }
+            }
+            set
+            {
+                title = value;
+            }
+        }
+        public string Company
+        {
+            get
+            {
+                if (company == null || company == "")
+                {
+                    return company;
+                }
+                else
+                {
+                    return "\r\n" + company;
+                }
+            }
+            set
+            {
+                company = value;
+            }
+        }
+        public string Address
+        {
+            get
+            {
+                if (address == null || address == "")
+                {
+                    return address;
+                }
+                else
+                {
+                    return "\r\n" + address;
+                }
+            }
+            set
+            {
+                address = value;
+            }
+        }
         public string HomePhone
         {
             get
@@ -76,7 +211,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return "H:" + homePhone;
+                    return "\r\n" + "H: " + homePhone;
                 }
             }
             set
@@ -94,7 +229,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return "M:" + mobilePhone;
+                    return "\r\n" + "M: " + mobilePhone;
                 }
             }
             set
@@ -112,7 +247,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return "W:" + workPhone;
+                    return "\r\n" + "W: " + workPhone;
                 }
             }
             set
@@ -130,12 +265,66 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return "F:" + fax;
+                    return "\r\n" + "F: " + fax;
                 }
             }
             set
             {
                 fax = value;
+            }
+        }
+        public string Email
+        {
+            get
+            {
+                if (email == null || email == "")
+                {
+                    return email;
+                }
+                else
+                {
+                    return "\r\n" + email;
+                }
+            }
+            set
+            {
+                email = value;
+            }
+        }
+        public string Email2
+        {
+            get
+            {
+                if (email2 == null || email2 == "")
+                {
+                    return email2;
+                }
+                else
+                {
+                    return "\r\n" + email2;
+                }
+            }
+            set
+            {
+                email2 = value;
+            }
+        }
+        public string Email3
+        {
+            get
+            {
+                if (email3 == null || email3 == "")
+                {
+                    return email3;
+                }
+                else
+                {
+                    return "\r\n" + email3;
+                }
+            }
+            set
+            {
+                email3 = value;
             }
         }
         public string HomePage
@@ -148,12 +337,30 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return "Homepage:" + homePage;
+                    return "\r\n" + "Homepage:\r\n" + homePage;
                 }
             }
             set
             {
                 homePage = value;
+            }
+        }
+        public string Address2
+        {
+            get
+            {
+                if (address2 == null || address2 == "")
+                {
+                    return address2;
+                }
+                else
+                {
+                    return "\r\n" + address2;
+                }
+            }
+            set
+            {
+                address2 = value;
             }
         }
         public string Phone2
@@ -166,7 +373,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return "P:" + phone2;
+                    return "\r\n" + "P: " + phone2;
                 }
             }
             set
@@ -174,21 +381,35 @@ namespace WebAddressbookTests
                 phone2 = value;
             }
         }
-        public string Email { get; set; }
-        public string Email2 { get; set; }
-        public string Email3 { get; set; }
-        public string MiddleName { get; set; }
-        public string NickName { get; set; }
-        public string Title { get; set; }
-        public string Company { get; set; }
-        public string Address2 { get; set; }
-        public string Notes { get; set; }
+        public string Notes
+        {
+            get
+            {
+                if (notes == null || notes == "")
+                {
+                    return notes;
+                }
+                else
+                {
+                    return "\r\n" + notes;
+                }
+            }
+            set
+            {
+                notes = value;
+            }
+        }
         public string AllInformation
         {
             get
             {
-                return Regex.Replace(FirstName + MiddleName + LastName + NickName + Title + Company + Address + HomePhone + MobilePhone + WorkPhone + Fax
-                + Email + Email2 + Email3 + HomePage + Address2 + Phone2 + Notes, "[ ]", "");
+                    return (FirstName + MiddleName + LastName
+                    + NickName + Title+ Company + Address + "\r\n"
+                    + HomePhone + MobilePhone + WorkPhone + Fax + "\r\n"
+                    + Email + Email2 + Email3 + HomePage + "\r\n\r\n"
+                    + Address2 + "\r\n"
+                    + Phone2 + "\r\n"
+                    + Notes).Trim();
             }
             set
             {
@@ -204,7 +425,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return (CleanUpEmail(Email) + CleanUpPhone(Email2) + CleanUpPhone(Email3)).Trim();
+                    return (CleanUpEmail(Email) + CleanUpEmail(Email2) + CleanUpEmail(Email3)).Trim();
                 }
             }
             set
@@ -218,7 +439,7 @@ namespace WebAddressbookTests
             {
                 return "";
             }
-            return email + "\r\n";
+            return email;
         }
         public string AllPhones
         {
@@ -244,7 +465,7 @@ namespace WebAddressbookTests
             {
                 return "";
             }
-            return Regex.Replace(phone, "[ PHMW:()-]", "") + "\r\n"; //return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+            return Regex.Replace(phone, "[ PHMW:()-]", ""); //return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
         }
     }
 }

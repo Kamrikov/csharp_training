@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -32,6 +33,9 @@ namespace WebAddressbookTests
         private string company;
         private string address;
         private string notes;
+        private bool phones;
+        private bool emails;
+
 
         public ContactData(string firstName, string lastName)
         {
@@ -85,7 +89,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return firstName + " ";
+                    return firstName;
                 }
             }
             set
@@ -103,7 +107,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return middleName + " ";
+                    return " " + middleName;
                 }
             }
             set
@@ -121,7 +125,7 @@ namespace WebAddressbookTests
                 }
                 else
                 {
-                    return lastName;
+                    return " " + lastName;
                 }
             }
             set
@@ -403,13 +407,49 @@ namespace WebAddressbookTests
         {
             get
             {
+                if (homePhone == "" && mobilePhone == "" && workPhone == "" && fax == "" && email == "" && email2 == "" && email3 == "" && homePage == "")
+                {
                     return (FirstName + MiddleName + LastName
-                    + NickName + Title+ Company + Address + "\r\n"
-                    + HomePhone + MobilePhone + WorkPhone + Fax + "\r\n"
-                    + Email + Email2 + Email3 + HomePage + "\r\n\r\n"
-                    + Address2 + "\r\n"
-                    + Phone2 + "\r\n"
-                    + Notes).Trim();
+                            + NickName + Title + Company + Address + "\r\n"
+                            + HomePhone + MobilePhone + WorkPhone + Fax
+                            + Email + Email2 + Email3 + HomePage +"F"
+                            + Address2 + "\r\n"
+                            + Phone2 + "\r\n"
+                            + Notes).Trim();
+                }
+                if (homePhone == "" && mobilePhone == "" && workPhone == "" && fax == "" && (email != "" || email2 != "" || email3 != "" || homePage != ""))
+                {
+                    return (FirstName + MiddleName + LastName
+                            + NickName + Title + Company + Address + "\r\n"
+                            + HomePhone + MobilePhone + WorkPhone + Fax
+                            + Email + Email2 + Email3 + HomePage + "\r\n\r\n"
+                            + Address2 + "\r\n"
+                            + Phone2 + "\r\n"
+                            + Notes).Trim();
+                }
+                else
+                {
+                    if ((homePhone != "" || mobilePhone != "" || workPhone != "" || fax != "") && email == "" && email2 == "" && email3 == "" && homePage == "")
+                    {
+                        return (FirstName + MiddleName + LastName
+                                + NickName + Title + Company + Address + "\r\n"
+                                + HomePhone + MobilePhone + WorkPhone + Fax + "\r\n"
+                                + Email + Email2 + Email3 + HomePage
+                                + Address2 + "\r\n"
+                                + Phone2 + "\r\n"
+                                + Notes).Trim();
+                    }
+                    else
+                    {
+                        return (FirstName + MiddleName + LastName
+                                + NickName + Title + Company + Address + "\r\n"
+                                + HomePhone + MobilePhone + WorkPhone + Fax + "\r\n"
+                                + Email + Email2 + Email3 + HomePage + "\r\n\r\n"
+                                + Address2 + "\r\n"
+                                + Phone2 + "\r\n"
+                                + Notes).Trim();
+                    }
+                }
             }
             set
             {

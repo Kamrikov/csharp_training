@@ -412,7 +412,7 @@ namespace WebAddressbookTests
                     return (FirstName + MiddleName + LastName
                             + NickName + Title + Company + Address + "\r\n"
                             + HomePhone + MobilePhone + WorkPhone + Fax
-                            + Email + Email2 + Email3 + HomePage +"F"
+                            + Email + Email2 + Email3 + HomePage + "\r\n"
                             + Address2 + "\r\n"
                             + Phone2 + "\r\n"
                             + Notes).Trim();
@@ -433,7 +433,7 @@ namespace WebAddressbookTests
                     {
                         return (FirstName + MiddleName + LastName
                                 + NickName + Title + Company + Address + "\r\n"
-                                + HomePhone + MobilePhone + WorkPhone + Fax + "\r\n"
+                                + HomePhone + MobilePhone + WorkPhone + Fax + "\r\n\r\n"
                                 + Email + Email2 + Email3 + HomePage
                                 + Address2 + "\r\n"
                                 + Phone2 + "\r\n"

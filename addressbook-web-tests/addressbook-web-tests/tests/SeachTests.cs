@@ -15,20 +15,6 @@ namespace WebAddressbookTests
         public void TestSearch()
         {
             System.Console.Out.Write(app.Contacts.GetNumberOfSearchResults());
-            /*
-            MyClass myClass = new MyClass();
-            myClass.a = "попытка1";
-            myClass.b = "попытка2";
-            string c = "";
-            foreach (PropertyInfo prop in typeof(MyClass).GetProperties())
-            {
-                System.Console.Out.Write("{0} = {1}", prop.Name, prop.GetValue(myClass, null));
-                System.Console.Out.Write(app.Contacts.GetNumberOfSearchResults());
-                c = c + prop.GetValue(myClass, null);
-            }
-
-            */
-            System.Console.Out.Write(6);
         }
     }
 }

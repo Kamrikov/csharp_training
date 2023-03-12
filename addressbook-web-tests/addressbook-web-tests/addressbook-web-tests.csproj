@@ -62,8 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="appmanager\ContactHelper.cs" />
-    <Compile Include="appmanager\Manager.cs" />
-    <Compile Include="appmanager\MyClass.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="appmanager\ApplicationManager.cs" />
     <Compile Include="model\ContactData.cs" />

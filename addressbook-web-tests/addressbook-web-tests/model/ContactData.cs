@@ -15,6 +15,7 @@ namespace WebAddressbookTests
     {
         private string allPhones;
         private string allEmails;
+        private string allInformation;
         private string mobilePhone;
         private string homePhone;
         private string workPhone;
@@ -33,10 +34,9 @@ namespace WebAddressbookTests
         private string company;
         private string address;
         private string notes;
-        private bool phones;
-        private bool emails;
-
-
+        public ContactData()
+        {
+        }
         public ContactData(string firstName, string lastName)
         {
             FirstName = firstName;
@@ -453,6 +453,7 @@ namespace WebAddressbookTests
             }
             set
             {
+                allInformation = value;
             }
         }
         public string AllEmails

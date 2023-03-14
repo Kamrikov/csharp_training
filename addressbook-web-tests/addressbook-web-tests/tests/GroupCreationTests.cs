@@ -29,7 +29,6 @@ namespace WebAddressbookTests
             }
             return groups;
         }
-
         public static IEnumerable<GroupData> GroupDataFromCsvFile()
         {
             List<GroupData> groups = new List<GroupData>();
@@ -77,7 +76,7 @@ namespace WebAddressbookTests
             app.Quit();
             return groups;
         }
-        [Test, TestCaseSource("GroupDataFromExcelFile")]
+        [Test, TestCaseSource("GroupDataFromJsonFile")]
         public void GroupCreationTest(GroupData group)
         {
             List<GroupData> oldGroups = app.Groups.GetGroupList();

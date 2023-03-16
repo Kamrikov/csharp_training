@@ -8,6 +8,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace WebAddressbookTests
 {
@@ -403,6 +404,8 @@ namespace WebAddressbookTests
                 notes = value;
             }
         }
+
+        [XmlIgnore]
         public string AllInformation
         {
             get
@@ -456,6 +459,7 @@ namespace WebAddressbookTests
                 allInformation = value;
             }
         }
+        [XmlIgnore]
         public string AllEmails
         {
             get
@@ -482,6 +486,7 @@ namespace WebAddressbookTests
             }
             return email;
         }
+        [XmlIgnore]
         public string AllPhones
         {
             get

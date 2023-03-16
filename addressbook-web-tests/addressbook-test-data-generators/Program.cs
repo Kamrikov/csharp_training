@@ -64,10 +64,7 @@ namespace addressbook_test_data_generators
                 List<ContactData> contacts = new List<ContactData>();
                 for (int i = 0; i < count; i++)
                 {
-                    contacts.Add(new ContactData(TestBase.GenerateRandomString(20), TestBase.GenerateRandomString(20))
-                    {
-                        Address = TestBase.GenerateRandomString(30)
-                    });
+                    contacts.Add(new ContactData(TestBase.GenerateRandomString(20), TestBase.GenerateRandomString(20)));
                 }
                 StreamWriter writer = new StreamWriter(fileName);
                 if (format == "csv")
@@ -127,8 +124,8 @@ namespace addressbook_test_data_generators
         {
             foreach (ContactData contact in contacts)
             {
-                writer.WriteLine(String.Format("${0},${1},${2}",
-                    contact.FirstName, contact.LastName, contact.Address));
+                writer.WriteLine(String.Format("${0},${1}",
+                    contact.FirstName, contact.LastName));
             }
         }
         static void WriteGroupsToXmlFile(List<GroupData> groups, StreamWriter writer)

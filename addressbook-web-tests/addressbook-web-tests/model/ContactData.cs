@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium.Remote;
+﻿using LinqToDB.Mapping;
+using Microsoft.Office.Interop.Excel;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,7 @@ using System.Xml.Serialization;
 
 namespace WebAddressbookTests
 {
+    [Table(Name = "addressbook")]
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
@@ -79,7 +82,10 @@ namespace WebAddressbookTests
                 return FirstName.CompareTo(other.FirstName);
             }
         }
+        [Column(Name = "id"), PrimaryKey]
         public string Id { get; set; }
+
+        [Column(Name = "firstname")]
         public string FirstName
         {
             get
@@ -116,6 +122,8 @@ namespace WebAddressbookTests
                 middleName = value;
             }
         }
+
+        [Column(Name = "lastname")]
         public string LastName
         {
             get

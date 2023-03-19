@@ -30,7 +30,7 @@ namespace WebAddressbookTests
         }
         public ContactHelper Modify(ContactData newData)
         {
-            SelectContact();
+            SelectContactFirst();
             InitContactModification(0);
             FillContactForm(newData);
             SubmitContactModification();
@@ -40,11 +40,11 @@ namespace WebAddressbookTests
         }
         public ContactHelper Remove()
         {
-            SelectContact();
+            SelectContactFirst();
             RemoveContact();
             return this;
         }
-        public ContactHelper SelectContact()
+        public ContactHelper SelectContactFirst()
         {
             driver.FindElement(By.XPath("//td/input")).Click();
             return this;
@@ -232,6 +232,32 @@ namespace WebAddressbookTests
                 .FindElements(By.TagName("td"))[6]
                 .FindElement(By.TagName("a")).Click();
             return this;
+        }
+        public void AddContactToGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigator.GoToHomePage();
+            ClearGroupFilter();
+            SelectContact(contact.Id);
+            SelectGroupToAdd(group.Name);
+            CommitAddingContactToGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+        }
+        public void ClearGroupFilter()
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
+        }
+        public void SelectContact(string contactId)
+        {
+            driver.FindElement(By.Id(contactId)).Click();
+        }
+        public void SelectGroupToAdd(string name)
+        {
+            new SelectElement(driver.FindElement(By.Name("to_group"))).SelectByText(name);
+        }
+        private void CommitAddingContactToGroup()
+        {
+            driver.FindElement(By.Name("add")).Click();
         }
     }
 }

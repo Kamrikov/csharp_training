@@ -413,6 +413,8 @@ namespace WebAddressbookTests
             }
         }
 
+        [Column(Name = "deprecated")]
+        public string Deprecated { get; set; }
         [XmlIgnore]
         public string AllInformation
         {
@@ -520,6 +522,13 @@ namespace WebAddressbookTests
                 return "";
             }
             return Regex.Replace(phone, "[ PHMW:()-]", ""); //return phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "") + "\r\n";
+        }
+        public static List<ContactData> GetAll()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Contacts.Where(x => x.Deprecated == "0000-00-00 00:00:00") select c).ToList();
+            }
         }
     }
 }

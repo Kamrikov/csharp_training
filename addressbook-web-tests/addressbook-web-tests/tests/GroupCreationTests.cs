@@ -125,9 +125,9 @@ namespace WebAddressbookTests
             end = DateTime.Now;
             System.Console.Out.WriteLine(end.Subtract(start));
             */
-            foreach (ContactData contact in GroupData.GetAll()[4].GetContacs())
+            foreach (ContactData contact in ContactData.GetAll())
             {
-                System.Console.Out.WriteLine(contact);
+                System.Console.Out.WriteLine(contact.Deprecated);
             }
         }
     }

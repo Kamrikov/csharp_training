@@ -135,6 +135,7 @@ namespace WebAddressbookTests
                 else
                 {
                     return " " + lastName;
+                    //return lastName;
                 }
             }
             set

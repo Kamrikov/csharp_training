@@ -19,14 +19,14 @@ namespace WebAddressbookTests
             newData.Header = "тестИзменение";
             newData.Footer = "тестИзменение";
 
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            List<GroupData> oldGroups = GroupData.GetAll();
             GroupData oldDate = oldGroups[0];
 
-            app.Groups.Modify(0, newData);
+            app.Groups.Modify(oldDate, newData);
 
             Assert.AreEqual(oldGroups.Count, app.Groups.GetGroupCount());
 
-            List<GroupData> newGroups = app.Groups.GetGroupList();
+            List<GroupData> newGroups = GroupData.GetAll();
             oldGroups[0].Name = newData.Name;
             oldGroups.Sort();
             newGroups.Sort();
@@ -39,7 +39,6 @@ namespace WebAddressbookTests
                     Assert.AreEqual(newData.Name, group.Name);
                 }
             }
-
         }
     }
 }

@@ -38,9 +38,25 @@ namespace WebAddressbookTests
             manager.Navigator.ReturnToHomePage();
             return this;
         }
+        public ContactHelper Modify(ContactData contact, ContactData newData)
+        {
+            SelectContact(contact.Id);
+            InitContactModification(0);
+            FillContactForm(newData);
+            SubmitContactModification();
+
+            manager.Navigator.ReturnToHomePage();
+            return this;
+        }
         public ContactHelper Remove()
         {
             SelectContactFirst();
+            RemoveContact();
+            return this;
+        }
+        public ContactHelper Remove(ContactData contact)
+        {
+            SelectContact(contact.Id);
             RemoveContact();
             return this;
         }

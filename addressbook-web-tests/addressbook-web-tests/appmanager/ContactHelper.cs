@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Net;
 using System.Security.Policy;
+using System.Reflection;
 
 namespace WebAddressbookTests
 {
@@ -28,6 +29,7 @@ namespace WebAddressbookTests
             manager.Navigator.ReturnToHomePage();
             return this;
         }
+        
         public ContactHelper Modify(ContactData newData)
         {
             SelectContactFirst();
@@ -41,7 +43,7 @@ namespace WebAddressbookTests
         public ContactHelper Modify(ContactData contact, ContactData newData)
         {
             SelectContact(contact.Id);
-            InitContactModification(0);
+            InitContactModification(contact.Id);
             FillContactForm(newData);
             SubmitContactModification();
 
@@ -84,8 +86,13 @@ namespace WebAddressbookTests
         public ContactHelper InitContactModification(int index)
         {
             driver.FindElements(By.Name("entry"))[index]
-                .FindElements(By.TagName("td"))[7]
-                .FindElement(By.TagName("a")).Click();
+              .FindElements(By.TagName("td"))[7]
+              .FindElement(By.TagName("a")).Click();
+            return this;
+        }
+        public ContactHelper InitContactModification(String id)
+        {
+            driver.FindElement(By.XPath("//a[@href='edit.php?id="+id+"']")).Click();
             return this;
         }
         public ContactHelper SubmitContactModification()
@@ -263,9 +270,9 @@ namespace WebAddressbookTests
         {
             new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
-        public void SelectContact(string contactId)
+        public void SelectContact(string id)
         {
-            driver.FindElement(By.Id(contactId)).Click();
+            driver.FindElement(By.Id(id)).Click();
         }
         public void SelectGroupToAdd(string name)
         {

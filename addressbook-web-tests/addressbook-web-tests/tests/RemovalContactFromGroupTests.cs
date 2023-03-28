@@ -7,19 +7,19 @@ using NUnit.Framework;
 
 namespace WebAddressbookTests
 {
-    public class AddingContactToGroupTests : AuthTestBase
+    public class RemovalContactFromGroupTests : AuthTestBase
     {
         [Test]
-        public void TestAddingContactToGroup()
+        public void TestRemovalContactFromGroup()
         {
             GroupData group = GroupData.GetAll()[0];
             List<ContactData> oldList = group.GetContacs();
-            ContactData contact = ContactData.GetAll().Except(oldList).First();
+            ContactData contact = oldList.First();
 
-            app.Contacts.AddContactToGroup(contact, group);
+            app.Contacts.RemoveContactFromGroup(contact, group);
 
             List<ContactData> newList = group.GetContacs();
-            oldList.Add(contact);
+            oldList.Remove(contact);
             newList.Sort();
             oldList.Sort();
 

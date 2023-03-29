@@ -12,13 +12,15 @@ namespace addressbook_tests_autoit
     {
         public ApplicationManager app;
 
-        [TestFixtureSetUp]
+        //[TestFixtureSetUp]
+        [OneTimeSetUp]
         public void InitApplication()
         {
             app = new ApplicationManager();
         }
 
-        [TestFixtureTearDown]
+        //[TestFixtureTearDown]
+        [OneTimeTearDown]
         public void StopApplication()
         {
             app.Stop();

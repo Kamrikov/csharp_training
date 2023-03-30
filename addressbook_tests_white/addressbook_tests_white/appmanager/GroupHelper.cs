@@ -19,7 +19,6 @@ namespace addressbook_tests_white
     public class GroupHelper : HelperBase
     {
         public static string GROUPWINTITLE = "Group editor";
-        public static string DELETEGROUPWINTITLE = "Delete group";
         public GroupHelper(ApplicationManager manager) : base(manager) { }
         public List<GroupData> GetGroupList()
         {
@@ -33,7 +32,6 @@ namespace addressbook_tests_white
                 {
                     Name = item.Text
                 });
-
             }
             CloseGroupsDialogue(dialogue);
             return list;
@@ -47,19 +45,14 @@ namespace addressbook_tests_white
             Keyboard.Instance.PressSpecialKey(KeyboardInput.SpecialKeys.RETURN);
             CloseGroupsDialogue(dialogue);
         }
-        /*
         internal void Remove()
         {
-            OpenGroupsDialogue();
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51");
-            aux.Send("{DOWN}");
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d51");
-            aux.WinWait(DELETEGROUPWINTITLE);
-            aux.ControlClick(DELETEGROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d53");
-            aux.WinWait(GROUPWINTITLE);
-            CloseGroupsDialogue();
+            Window dialogue = OpenGroupsDialogue();
+            Keyboard.Instance.PressSpecialKey(KeyboardInput.SpecialKeys.DOWN);
+            dialogue.Get<Button>("uxDeleteAddressButton").Click();
+            dialogue.Get<Button>("uxOKAddressButton").Click();
+            CloseGroupsDialogue(dialogue);
         }
-        */
         private Window OpenGroupsDialogue()
         {
             manager.MainWindow.Get<Button>("groupButton").Click();
@@ -69,24 +62,11 @@ namespace addressbook_tests_white
         {
             dialogue.Get<Button>("uxCloseAddressButton").Click();
         }
-        /*
+        
         internal void CheckForGruop()
         {
-            OpenGroupsDialogue();
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51");
-            aux.Send("{DOWN}");
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d51");
-            aux.WinWait("Information");
-            aux.ControlClick("Information", "", "WindowsForms10.BUTTON.app.0.2c908d51");
-            aux.Send("{UP}");
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d53");
-            GroupData newGroup = new GroupData()
-            {
-                Name = "Нет групп"
-            };
-            aux.Send(newGroup.Name);
-            aux.Send("{ENTER}");
+            Window dialogue = OpenGroupsDialogue();
         }
-        */
+        
     }
 }

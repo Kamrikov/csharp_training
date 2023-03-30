@@ -13,7 +13,7 @@ namespace addressbook_tests_white
 
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
-            //app.Groups.Remove();
+            app.Groups.Remove();
 
             List<GroupData> newGroups = app.Groups.GetGroupList();
 

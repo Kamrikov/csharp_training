@@ -41,7 +41,6 @@ namespace addressbook_tests_autoit
         internal void Remove()
         {
             OpenGroupsDialogue();
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51");
             aux.Send("{DOWN}");
             aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d51");
             aux.WinWait(DELETEGROUPWINTITLE);
@@ -61,7 +60,6 @@ namespace addressbook_tests_autoit
         internal void CheckForGruop()
         {
             OpenGroupsDialogue();
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51");
             aux.Send("{DOWN}");
             aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d51");
             aux.WinWait("Information");

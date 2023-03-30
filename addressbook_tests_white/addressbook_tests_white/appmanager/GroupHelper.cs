@@ -4,8 +4,17 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using TestStack.White;
+using TestStack.White.InputDevices;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.TreeItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.WindowsAPI;
+using TestStack.White.ScreenMap;
+using System.Windows.Automation;
 
-namespace addressbook_tests_autoit
+namespace addressbook_tests_white
 {
     public class GroupHelper : HelperBase
     {
@@ -15,29 +24,30 @@ namespace addressbook_tests_autoit
         public List<GroupData> GetGroupList()
         {
             List<GroupData> list = new List<GroupData>();
-            OpenGroupsDialogue();
-            string count = aux.ControlTreeView(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51",
-                "GetItemCount", "#0", "");
-            for (int i = 0; i < int.Parse(count); i++)
+            Window dialogue = OpenGroupsDialogue();
+            Tree tree = dialogue.Get<Tree>("uxAddressTreeView");
+            TreeNode root = tree.Nodes[0];
+            foreach (TreeNode item in root.Nodes)
             {
-                string item = aux.ControlTreeView(GROUPWINTITLE, "", "WindowsForms10.SysTreeView32.app.0.2c908d51",
-                    "GetText", "#0|#"+i, "");
                 list.Add(new GroupData()
                 {
-                    Name = item
+                    Name = item.Text
                 });
+
             }
-            CloseGroupsDialogue();
+            CloseGroupsDialogue(dialogue);
             return list;
         }
         public void Add(GroupData newGroup)
         {
-            OpenGroupsDialogue();
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d53");
-            aux.Send(newGroup.Name);
-            aux.Send("{ENTER}");
-            CloseGroupsDialogue();
+            Window dialogue = OpenGroupsDialogue();
+            dialogue.Get<Button>("uxNewAddressButton").Click();
+            TextBox textBox = (TextBox) dialogue.Get(SearchCriteria.ByControlType(ControlType.Edit));
+            textBox.Enter(newGroup.Name);
+            Keyboard.Instance.PressSpecialKey(KeyboardInput.SpecialKeys.RETURN);
+            CloseGroupsDialogue(dialogue);
         }
+        /*
         internal void Remove()
         {
             OpenGroupsDialogue();
@@ -49,15 +59,17 @@ namespace addressbook_tests_autoit
             aux.WinWait(GROUPWINTITLE);
             CloseGroupsDialogue();
         }
-        private void OpenGroupsDialogue()
+        */
+        private Window OpenGroupsDialogue()
         {
-            aux.ControlClick(WINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d512");
-            aux.WinWait(GROUPWINTITLE);
+            manager.MainWindow.Get<Button>("groupButton").Click();
+            return manager.MainWindow.ModalWindow(GROUPWINTITLE);
         }
-        private void CloseGroupsDialogue()
+        private void CloseGroupsDialogue(Window dialogue)
         {
-            aux.ControlClick(GROUPWINTITLE, "", "WindowsForms10.BUTTON.app.0.2c908d54");
+            dialogue.Get<Button>("uxCloseAddressButton").Click();
         }
+        /*
         internal void CheckForGruop()
         {
             OpenGroupsDialogue();
@@ -75,5 +87,6 @@ namespace addressbook_tests_autoit
             aux.Send(newGroup.Name);
             aux.Send("{ENTER}");
         }
+        */
     }
 }

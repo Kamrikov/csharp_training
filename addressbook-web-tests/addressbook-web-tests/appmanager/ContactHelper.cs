@@ -110,7 +110,10 @@ namespace WebAddressbookTests
         }
         public ContactHelper CheckForContact()
         {
+            manager.Navigator.GoToHomePage();
+
             if (!IsElementPresent(By.XPath("//td/input")))
+            //if (!IsElementPresent(By.XPath("//table[@id='maintable']/tbody/tr[2]/td/input")))
             {
                 ContactData contact = new ContactData("Нет", "Контактов");
                 Create(contact);

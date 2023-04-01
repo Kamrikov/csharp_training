@@ -13,7 +13,7 @@ namespace mantis_tests
         private FtpClient client;
         public FtpHelper(ApplicationManager manager) : base(manager) {
             client = new FtpClient();
-            client.Host = "http://localhost:8080";
+            client.Host = "localhost";
             client.Credentials = new System.Net.NetworkCredential("mantis", "mantis");
             client.Connect();
         }
@@ -45,7 +45,6 @@ namespace mantis_tests
             {
                 client.DeleteFile(path);
             }
-
             using (Stream ftpStream = client.OpenWrite(path))
             {
                 byte[] buffer = new byte[8 * 1024];

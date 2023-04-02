@@ -12,10 +12,10 @@ namespace mantis_tests
         [OneTimeSetUp]
         public void SetUpConfig()
         {
-            app.Ftp.BackupFile("config/config_inc.php");
+            app.Ftp.BackupFile("/config/config_inc.php");
             using (Stream localFile = File.Open("config_inc.php", FileMode.Open))
             {
-                app.Ftp.Upload("config/config_inc.php", localFile);
+                app.Ftp.Upload("/config/config_inc.php", localFile);
             }
         }
         [Test]
@@ -23,10 +23,14 @@ namespace mantis_tests
         {
             AccountData account = new AccountData()
             {
-                Name = "testuser1",
-                Password = "password1",
-                Email = "testuser1@localhost.localdomain"
+                Name = "testuser2",
+                Password = "password2",
+                Email = "testuser2@localhost.localdomain"
             };
+
+            app.James.Delete(account);
+            app.James.Add(account);
+
             app.Registration.Register(account);
         }
         [OneTimeTearDown] 

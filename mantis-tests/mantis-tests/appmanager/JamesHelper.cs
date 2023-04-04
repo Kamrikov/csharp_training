@@ -18,12 +18,9 @@ namespace mantis_tests
             }
             TelnetConnection telnet = LoginToJames();
             System.Console.Out.WriteLine(telnet.Read());
-            telnet.WriteLine("adduser " + account.Name + " " + account.Password);
+            telnet.WriteLine("adduser " + account.Username + " " + account.Password);
             System.Console.Out.WriteLine(telnet.Read());
         }
-
-
-
         public void Delete(AccountData account) 
         {
             if (! Verify(account))
@@ -32,14 +29,14 @@ namespace mantis_tests
             }
             TelnetConnection telnet = LoginToJames();
             System.Console.Out.WriteLine(telnet.Read());
-            telnet.WriteLine("deluser " + account.Name);
+            telnet.WriteLine("deluser " + account.Username);
             System.Console.Out.WriteLine(telnet.Read());
         }
         public bool Verify(AccountData account) 
         {
             TelnetConnection telnet = LoginToJames();
             System.Console.Out.WriteLine(telnet.Read());
-            telnet.WriteLine("verify " + account.Name);
+            telnet.WriteLine("verify " + account.Username);
             String s = telnet.Read();
             System.Console.Out.WriteLine(s);
             return ! s.Contains("does not exist");

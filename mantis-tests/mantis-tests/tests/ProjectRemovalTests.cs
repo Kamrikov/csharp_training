@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -7,18 +8,17 @@ using NUnit.Framework;
 namespace mantis_tests
 {
     [TestFixture]
-    public class ProjectCreationTests : TestBase
+    public class ProjectRemovalTests : TestBase
     {
         [Test]
-        public void ProjectCreationTest()
+        public void ProjectRemovalTest()
         {
             loginHelper.GoToLoginPage();
-            loginHelper.Login(new AccountData ("administrator", "root"));
+            loginHelper.Login(new AccountData("administrator", "root"));
             managementMenuHelper.GoToManagePage();
             GoToManageProjectPage();
-            InitNewProject();
-            FillProjectForm(new ProjectData ("название5", "описание"));
-            SubmitProjectCreation();
+            GoToEditProject();
+            RemoveProject();
             loginHelper.QuitToLoginPage();
         }
     }

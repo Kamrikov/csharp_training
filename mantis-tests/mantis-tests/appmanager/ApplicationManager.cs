@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using OpenQA.Selenium.Support.UI;
-using NUnit.Framework;
 
 namespace mantis_tests
 {
@@ -16,16 +15,36 @@ namespace mantis_tests
         protected IWebDriver driver;
         protected string baseURL;
 
+        protected LoginHelper loginHelper;
+        protected ManagementMenuHelper managementMenuHelper;
+        protected ProjectManagementHelper projectManagementHelper;
+
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
         private ApplicationManager()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost:8080";
+            baseURL = "http://localhost:8080/mantisbt-2.25.6";
+
             Registration = new RegistrationHelper(this);
             Ftp = new FtpHelper(this);
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
+
+            loginHelper = new LoginHelper(this, baseURL);
+            managementMenuHelper = new ManagementMenuHelper(this);
+            projectManagementHelper = new ProjectManagementHelper(this);
+        }
+        public void Stop()
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                // Ignore errors if unable to close the browser
+            }
         }
         ~ApplicationManager() //После Лекции 3.2 этот деструктор должен закрывать браузер
         {
@@ -59,5 +78,8 @@ namespace mantis_tests
         public FtpHelper Ftp { get; set; }
         public JamesHelper James { get; set; }
         public MailHelper Mail { get; set; }
+        public LoginHelper Auth { get { return loginHelper; } }
+        public ManagementMenuHelper Management { get { return managementMenuHelper; } }
+        public ProjectManagementHelper Project { get { return projectManagementHelper; } }
     }
 }

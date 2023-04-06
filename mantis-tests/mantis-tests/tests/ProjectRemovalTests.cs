@@ -13,13 +13,7 @@ namespace mantis_tests
         [Test]
         public void ProjectRemovalTest()
         {
-            loginHelper.GoToLoginPage();
-            loginHelper.Login(new AccountData("administrator", "root"));
-            managementMenuHelper.GoToManagePage();
-            GoToManageProjectPage();
-            GoToEditProject();
-            RemoveProject();
-            loginHelper.QuitToLoginPage();
+            app.Project.Remove();
         }
     }
 }

@@ -12,14 +12,9 @@ namespace mantis_tests
         [Test]
         public void ProjectCreationTest()
         {
-            loginHelper.GoToLoginPage();
-            loginHelper.Login(new AccountData ("administrator", "root"));
-            managementMenuHelper.GoToManagePage();
-            GoToManageProjectPage();
-            InitNewProject();
-            FillProjectForm(new ProjectData ("название5", "описание"));
-            SubmitProjectCreation();
-            loginHelper.QuitToLoginPage();
+            ProjectData project = new ProjectData("название", "описание");
+
+            app.Project.Create(project);
         }
     }
 }

@@ -9,25 +9,6 @@ namespace mantis_tests
 {
     public class TestBase
     {
-        protected ApplicationManager app;
-
-        [SetUp]
-        public void SetupTest()
-        {
-            app = new ApplicationManager();
-            app.Auth
-                .GoToLoginPage()
-                .Login(new AccountData("administrator", "root"));
-        }
-
-        [TearDown]
-        public void TeardownTest()
-        {
-            app.Stop();
-        }
-   
-
-        /*
         public static bool PERFORM_LONG_UI_CHECKS = true;
         protected ApplicationManager app;
 
@@ -36,7 +17,7 @@ namespace mantis_tests
         {
             app = ApplicationManager.GetInstance();
         }
-
+        /*
         public static Random rnd = new Random();
         public static string GenerateRandomString(int max)
         {

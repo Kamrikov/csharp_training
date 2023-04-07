@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace mantis_tests
@@ -12,9 +13,9 @@ namespace mantis_tests
         public ProjectManagementHelper(ApplicationManager manager) : base(manager) { } 
         public ProjectManagementHelper Create(ProjectData project)
         {
-            manager.Management.GoToManagePage();
+            manager.Navigator.GoToManagePage();
+            manager.Navigator.GoToManageProjectPage();
 
-            GoToManageProjectPage();
             InitNewProject();
             FillProjectForm(project);
             SubmitProjectCreation();
@@ -22,15 +23,11 @@ namespace mantis_tests
         }
         public ProjectManagementHelper Remove()
         {
-            manager.Management.GoToManagePage();
-            GoToManageProjectPage();
+            manager.Navigator.GoToManagePage();
+            manager.Navigator.GoToManageProjectPage();
+
             GoToEditProject();
             RemoveProject();
-            return this;
-        }
-        public ProjectManagementHelper GoToManageProjectPage()
-        {
-            driver.FindElement(By.LinkText("Управление проектами")).Click();
             return this;
         }
         public ProjectManagementHelper InitNewProject()
@@ -40,10 +37,8 @@ namespace mantis_tests
         }
         public ProjectManagementHelper FillProjectForm(ProjectData project)
         {
-            driver.FindElement(By.Id("project-name")).Clear();
-            driver.FindElement(By.Id("project-name")).SendKeys(project.Name);
-            driver.FindElement(By.Id("project-description")).Clear();
-            driver.FindElement(By.Id("project-description")).SendKeys(project.Description);
+            Type(By.Id("project-name"), project.Name);
+            Type(By.Id("project-description"), project.Description);
             return this;
         }
         public ProjectManagementHelper SubmitProjectCreation()

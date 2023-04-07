@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace mantis_tests
 {
     [TestFixture]
-    public class ProjectRemovalTests : TestBase
+    public class ProjectRemovalTests : AuthTestBase
     {
         [Test]
         public void ProjectRemovalTest()

@@ -11,31 +11,39 @@ namespace mantis_tests
 {
     public class LoginHelper : HelperBase
     {
-        private string baseURL;
-        public LoginHelper(ApplicationManager manager, string baseURL) : base(manager)
+        public LoginHelper(ApplicationManager manager) : base(manager) { }
+        public void Login(AccountData account)
         {
-            this.baseURL = baseURL;
-        }
-        public LoginHelper GoToLoginPage()
-        {
-            driver.Navigate().GoToUrl(baseURL + "/login_page.php");
-            return this;
-        }
-        public LoginHelper Login(AccountData account)
-        {
-            driver.FindElement(By.Name("username")).Clear();
-            driver.FindElement(By.Name("username")).SendKeys(account.Username);
+            if (IsLoggedIn())
+            {
+                if (IsLoggedIn(account))
+                {
+                    return;
+                }
+                Logout();
+            }
+            Type(By.Name("username"), account.Username);
             driver.FindElement(By.XPath("//input[@value='Вход']")).Click();
-            driver.FindElement(By.Name("password")).Clear();
-            driver.FindElement(By.Name("password")).SendKeys(account.Password);
+            Type(By.Name("password"), account.Password);
             driver.FindElement(By.XPath("//input[@value='Вход']")).Click();
-            return this;
         }
-        public LoginHelper QuitToLoginPage()
+        public void Logout()
         {
-            driver.FindElement(By.XPath("//div[@id='navbar-container']/div[2]/ul/li[3]/a/i[2]")).Click();
-            driver.FindElement(By.LinkText("Выход")).Click();
-            return this;
+            if (IsLoggedIn())
+            {
+                driver.FindElement(By.XPath("//div[@id='navbar-container']/div[2]/ul/li[3]/a/i[2]")).Click();
+                driver.FindElement(By.LinkText("Выход")).Click();
+            }
+        }
+        public bool IsLoggedIn()
+        {
+            return IsElementPresent(By.CssSelector("span.smaller-75"));
+        }
+        public bool IsLoggedIn(AccountData account)
+        {
+            return IsLoggedIn()
+                && driver.FindElement(By.TagName("span")).Text == account.Username;
+                //GetLoggetUserName() == account.Username;
         }
     }
 }

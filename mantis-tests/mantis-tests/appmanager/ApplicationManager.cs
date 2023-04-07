@@ -16,6 +16,7 @@ namespace mantis_tests
         protected string baseURL;
 
         protected LoginHelper loginHelper;
+        protected NavigationHelper navigator;
         protected ManagementMenuHelper managementMenuHelper;
         protected ProjectManagementHelper projectManagementHelper;
 
@@ -31,20 +32,10 @@ namespace mantis_tests
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
 
-            loginHelper = new LoginHelper(this, baseURL);
+            loginHelper = new LoginHelper(this);
+            navigator = new NavigationHelper(this, baseURL);
             managementMenuHelper = new ManagementMenuHelper(this);
             projectManagementHelper = new ProjectManagementHelper(this);
-        }
-        public void Stop()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
-            }
         }
         ~ApplicationManager() //После Лекции 3.2 этот деструктор должен закрывать браузер
         {
@@ -62,7 +53,8 @@ namespace mantis_tests
             if (! app.IsValueCreated)
             {
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.driver.Url = "http://localhost:8080/mantisbt-2.25.6/login_page.php";
+                newInstance.Navigator.GoToLoginPage();
+                //newInstance.driver.Url = "http://localhost:8080/mantisbt-2.25.6/login_page.php";
                 app.Value = newInstance;
             }
             return app.Value;
@@ -79,6 +71,7 @@ namespace mantis_tests
         public JamesHelper James { get; set; }
         public MailHelper Mail { get; set; }
         public LoginHelper Auth { get { return loginHelper; } }
+        public NavigationHelper Navigator { get { return navigator; } }
         public ManagementMenuHelper Management { get { return managementMenuHelper; } }
         public ProjectManagementHelper Project { get { return projectManagementHelper; } }
     }

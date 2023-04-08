@@ -29,7 +29,8 @@ namespace mantis_tests
             {
                 return;
             }
-            driver.FindElement(By.XPath("//div[@id='sidebar']/ul/li[7]/a/i")).Click();
+            driver.FindElement(By.CssSelector("i.fa.fa-gears.menu-icon")).Click();
+            //driver.FindElement(By.XPath("//div[@id='sidebar']/ul/li[6]/a/i")).Click();
         }
         public void GoToManageProjectPage()
         {

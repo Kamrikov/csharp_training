@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mantis_tests
 {
-    public class ProjectData
+    public class ProjectData : IEquatable<ProjectData>, IComparable<ProjectData>
     {
         private string name;
         private string description = "";
@@ -14,6 +14,41 @@ namespace mantis_tests
         {
             this.name = name;
             this.description = description;
+        }
+        public bool Equals(ProjectData other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+            if  (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return Name == other.Name; //&& Description == other.Description; ;
+        }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() + Description.GetHashCode();
+        }
+        public override string ToString()
+        {
+            return "name=" + Name + " " + "в" + " " + "разработке" + " " + "публичный" + " " + Description;
+        }
+        public int CompareTo(ProjectData other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return 1;
+            }
+            if (Name.CompareTo(other.Name) != 0)
+            {
+                return Name.CompareTo(other.Name);
+            }
+            else
+            {
+                return Description.CompareTo(other.Description);
+            }
         }
         public string Name
         {

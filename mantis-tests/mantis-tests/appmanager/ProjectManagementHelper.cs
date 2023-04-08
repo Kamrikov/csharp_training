@@ -57,5 +57,31 @@ namespace mantis_tests
             driver.FindElement(By.XPath("//input[@value='Удалить проект']")).Click();
             return this;
         }
+        public ProjectManagementHelper CheckForProject()
+        {
+            manager.Navigator.GoToManagePage();
+            manager.Navigator.GoToManageProjectPage();
+            if (!IsElementPresent(By.CssSelector("td > a")))
+            {
+                ProjectData project = new ProjectData("Новая группа", "Не было групп");
+                InitNewProject();
+                FillProjectForm(project);
+                SubmitProjectCreation();
+            }
+            return this;
+        }
+        public List<ProjectData> GetProjectList()
+        {
+            List<ProjectData> projects = new List<ProjectData>();
+            manager.Navigator.GoToManagePage();
+            manager.Navigator.GoToManageProjectPage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr"));
+            foreach (IWebElement element in elements)
+            {
+                projects.Add(new ProjectData(element.Text, element.Text));
+            }
+
+            return projects;
+        }
     }
 }

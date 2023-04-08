@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace mantis_tests
 {
@@ -12,9 +13,17 @@ namespace mantis_tests
         [Test]
         public void ProjectCreationTest()
         {
-            ProjectData project = new ProjectData("название10", "описание");
+            ProjectData project = new ProjectData("название0", "описание");
+
+            List<ProjectData> oldProject = app.Project.GetProjectList();
 
             app.Project.Create(project);
+
+            List<ProjectData> newProject = app.Project.GetProjectList();
+            oldProject.Add(project);
+            oldProject.Sort();
+            newProject.Sort();
+            Assert.AreEqual(oldProject, newProject);
         }
     }
 }

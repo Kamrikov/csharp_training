@@ -25,7 +25,7 @@ namespace mantis_tests
             {
                 return true;
             }
-            return Name == other.Name; //&& Description == other.Description; ;
+            return Name == other.Name; // && Description == other.Description; ;
         }
         public override int GetHashCode()
         {

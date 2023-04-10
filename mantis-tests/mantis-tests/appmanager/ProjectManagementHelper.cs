@@ -75,7 +75,8 @@ namespace mantis_tests
             List<ProjectData> projects = new List<ProjectData>();
             manager.Navigator.GoToManagePage();
             manager.Navigator.GoToManageProjectPage();
-            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr"));
+            //ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr"));
+            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//a[contains(@href, 'manage_proj_edit_page.php?project_id=')]"));
             foreach (IWebElement element in elements)
             {
                 projects.Add(new ProjectData(element.Text, element.Text));

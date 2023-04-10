@@ -13,7 +13,7 @@ namespace mantis_tests
         [Test]
         public void ProjectCreationTest()
         {
-            ProjectData project = new ProjectData("название0", "описание");
+            ProjectData project = new ProjectData("название8", "описание");
 
             List<ProjectData> oldProject = app.Project.GetProjectList();
 

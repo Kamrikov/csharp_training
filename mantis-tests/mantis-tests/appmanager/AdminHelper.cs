@@ -7,6 +7,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using OpenQA.Selenium.Firefox;
 
 namespace mantis_tests
 {
@@ -47,7 +48,7 @@ namespace mantis_tests
         }
         private IWebDriver OpenAppAndLogin()
         {
-            IWebDriver driver = new SimpleBrowserDriver();
+            IWebDriver driver = new FirefoxDriver();
             driver.Url = baseURL + "/login_page.php";
             driver.FindElement(By.Name("username")).SendKeys("administrator");
             driver.FindElement(By.CssSelector("input.submit")).Click();

@@ -17,7 +17,6 @@ namespace mantis_tests
         {
             app = ApplicationManager.GetInstance();
         }
-        /*
         public static Random rnd = new Random();
         public static string GenerateRandomString(int max)
         {
@@ -29,7 +28,5 @@ namespace mantis_tests
             }
             return builder.ToString();
         }
-        */
     }
-    
 }

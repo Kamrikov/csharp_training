@@ -15,7 +15,7 @@ namespace mantis_tests
         public void ProjectCreationTest()
         {
             //ProjectData project = new ProjectData("название9", "описание");
-            ProjectData project = new ProjectData(GenerateRandomString(10), "описание");
+            ProjectData project = new ProjectData(GenerateRandomString(15), "описание");
             
             List<ProjectData> oldProject = app.Project.GetProjectList();
 

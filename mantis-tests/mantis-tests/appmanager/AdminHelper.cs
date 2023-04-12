@@ -50,10 +50,12 @@ namespace mantis_tests
         {
             IWebDriver driver = new FirefoxDriver();
             driver.Url = baseURL + "/login_page.php";
+            driver.FindElement(By.Name("username")).Clear();
             driver.FindElement(By.Name("username")).SendKeys("administrator");
-            driver.FindElement(By.CssSelector("input.submit")).Click();
+            driver.FindElement(By.XPath("//input[@value='Вход']")).Click();
+            driver.FindElement(By.Name("password")).Clear();
             driver.FindElement(By.Name("password")).SendKeys("root");
-            driver.FindElement(By.CssSelector("input.submit")).Click();
+            driver.FindElement(By.XPath("//input[@value='Вход']")).Click();
             return driver;
         }
     }

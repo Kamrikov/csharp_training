@@ -21,9 +21,9 @@ namespace mantis_tests
         [Test]
         public void TestAccountRegistration()
         {
-            AccountData account = new AccountData("testuser4", "password")
+            AccountData account = new AccountData("testuser10", "password")
             {
-                Email = "testuser4@localhost.localdomain"
+                Email = "testuser10@localhost.localdomain"
             };
 
             List<AccountData> accounts = app.Admin.GetAllAccounts();

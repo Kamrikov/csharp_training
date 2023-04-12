@@ -32,6 +32,7 @@ namespace mantis_tests
             James = new JamesHelper(this);
             Mail = new MailHelper(this);
             Admin = new AdminHelper(this, baseURL);
+            API = new APIHelper(this);
 
             loginHelper = new LoginHelper(this);
             navigator = new NavigationHelper(this, baseURL);
@@ -72,6 +73,7 @@ namespace mantis_tests
         public JamesHelper James { get; set; }
         public MailHelper Mail { get; set; }
         public AdminHelper Admin { get; set; }
+        public APIHelper API { get; set; }
 
         public LoginHelper Auth { get { return loginHelper; } }
         public NavigationHelper Navigator { get { return navigator; } }

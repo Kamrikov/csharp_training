@@ -9,15 +9,25 @@ namespace addressbook_tests_autoit
         [Test]
         public void GroupRemovalTest()
         {
-            app.Groups.CheckForGruop();
-
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
-            app.Groups.Remove();
+            GroupData newGroup = new GroupData()
+            {
+                Name = "Новая группа"
+            };
+            app.Groups.Add(newGroup);
 
             List<GroupData> newGroups = app.Groups.GetGroupList();
 
-            oldGroups.RemoveAt(0);
+            int id = app.Groups.GetGroupId(newGroup);
+
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreNotEqual(oldGroups, newGroups);
+
+            app.Groups.Remove(id);
+            newGroups = app.Groups.GetGroupList();
+            newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
         }
     }

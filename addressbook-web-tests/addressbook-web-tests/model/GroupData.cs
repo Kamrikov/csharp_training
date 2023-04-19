@@ -64,7 +64,7 @@ namespace WebAddressbookTests
                 return (from g in db.Groups select g).ToList();
             }
         }
-        public List<ContactData> GetContacs()
+        public List<ContactData> GetContacts()
         {
             using (AddressBookDB db = new AddressBookDB())
             {

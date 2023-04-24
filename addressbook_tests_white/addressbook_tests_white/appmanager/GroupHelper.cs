@@ -62,7 +62,6 @@ namespace addressbook_tests_white
         {
             dialogue.Get<Button>("uxCloseAddressButton").Click();
         }
-        
         internal void CheckForGruop()
         {
             Window dialogue = OpenGroupsDialogue();
